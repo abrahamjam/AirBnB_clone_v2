@@ -1,0 +1,14 @@
+{% if state is mapping %}
+States
+{% for s in state.values()|sort(attribute="name") %}
+{{ s.id }}: {{ s.name }}
+{% endfor %}
+{% elif state is defined %}
+State: {{ state.name }}
+Cities:
+{% for city in state.cities|sort(attribute="name") %}
+{{ city.id }}: {{ city.name }}
+{% endfor %}
+{% else %}
+Not found!
+{% endif %}

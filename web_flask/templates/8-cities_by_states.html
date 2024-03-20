@@ -1,0 +1,7 @@
+States
+{% for state in states.values()|sort(attribute="name") %}
+{{ state.id }}: {{ state.name }}
+{% for city in state.cities|sort(attribute="name") %}
+{{ city.id }}: {{ city.name }}
+{% endfor %}
+{% endfor %}

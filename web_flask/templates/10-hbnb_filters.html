@@ -1,0 +1,15 @@
+States
+ 
+{% for state in states.values()|sort(attribute="name") %}
+{{ state.name }}
+{% for city in state.cities|sort(attribute="name") %}
+{{ city.name }}
+{% endfor %}
+{% endfor %}
+Amenities
+ 
+{% for amenity in amenities.values()|sort(attribute="name") %}
+{{ amenity.name }}
+{% endfor %}
+Search
+Holberton School

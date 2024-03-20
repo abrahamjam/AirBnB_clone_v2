@@ -1,0 +1,4 @@
+States
+{% for state in states.values()|sort(attribute="name") %}
+{{ state.id }}: {{ state.name }}
+{% endfor %}
