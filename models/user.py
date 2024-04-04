@@ -1,19 +1,34 @@
 #!/usr/bin/python3
-"""Defines the User class."""
-from models.base_model import BaseModel
+""" """
+from tests.test_models.test_base_model import test_basemodel
+from models.user import User
+
+class test_User(test_basemodel):
+    """ """
 
 
-class User(BaseModel):
-    """Represent a User.
+    def __init__(self, *args, **kwargs):
+        """ """
+        super().__init__(*args, **kwargs)
+        self.name = "User"
+        self.value = User
 
-    Attributes:
-        email (str): The email of the user.
-        password (str): The password of the user.
-        first_name (str): The first name of the user.
-        last_name (str): The last name of the user.
-    """
+    def test_first_name(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.first_name), str)
+   
+    def test_last_name(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.last_name), str)
 
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
+    def test_email(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.email), str)
+
+    def test_password(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.password), str)

@@ -1,17 +1,28 @@
 #!/usr/bin/python3
-"""Defines the Review class."""
-from models.base_model import BaseModel
+""" """
+from tests.test_models.test_base_model import test_basemodel
+from models.review import Review
 
+class test_review(test_basemodel):
+    """ """
 
-class Review(BaseModel):
-    """Represent a review.
+    def __init__(self, *args, **kwargs):
+        """ """
+        super().__init__(*args, **kwargs)
+        self.name = "Review"
+        self.value = Review
 
-    Attributes:
-        place_id (str): The Place id.
-        user_id (str): The User id.
-        text (str): The text of the review.
-    """
+    def test_place_id(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.place_id), str)
 
-    place_id = ""
-    user_id = ""
-    text = ""
+    def test_user_id(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.user_id), str)
+
+    def test_text(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.text), str)

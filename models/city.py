@@ -1,15 +1,23 @@
 #!/usr/bin/python3
-"""Defines the City class."""
-from models.base_model import BaseModel
+""" """
+from tests.test_models.test_base_model import test_basemodel
+from models.city import City
 
+class test_City(test_basemodel):
+    """ """
 
-class City(BaseModel):
-    """Represent a city.
+    def __init__(self, *args, **kwargs):
+        """ """
+        super().__init__(*args, **kwargs)
+        self.name = "City"
+        self.value = City
 
-    Attributes:
-        state_id (str): The state id.
-        name (str): The name of the city.
-    """
+    def test_state_id(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.state_id), str)
 
-    state_id = ""
-    name = ""
+    def test_name(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.name), str)

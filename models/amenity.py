@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-"""Defines the Amenity class."""
-from models.base_model import BaseModel
+""" """
+from tests.test_models.test_base_model import test_basemodel
+from models.amenity import Amenity
 
+class test_Amenity(test_basemodel):
+    """ """
 
-class Amenity(BaseModel):
-    """Represent an amenity.
+    def __init__(self, *args, **kwargs):
+        """ """
+        super().__init__(*args, **kwargs)
+        self.name = "Amenity"
+        self.value = Amenity
 
-    Attributes:
-        name (str): The name of the amenity.
-    """
-
-    name = ""
+    def test_name2(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.name), str)
