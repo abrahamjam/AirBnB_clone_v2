@@ -1,39 +1,61 @@
-States
- 
-{% for state in states.values()|sort(attribute="name") %}
-{{ state.name }}
-{% for city in state.cities|sort(attribute="name") %}
-{{ city.name }}
-{% endfor %}
-{% endfor %}
-Amenities
- 
-{% for amenity in amenities.values()|sort(attribute="name") %}
-{{ amenity.name}}
-{% endfor %}
-Search
-Places
-{% for place in places.values()|sort(attribute="name") %}
-{{ place.name }}
-${{ place.price_by_night }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBNB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <!-- Header content goes here -->
+        </div>
+    </header>
+    <div class="container">
+        <section class="filters">
+            <div class="states_filter">
+                <h2>States</h2>
+                <!-- Filter content goes here -->
+                {% for state in states.values() %}
+                <input type="checkbox" name="state" value="{{ state.id }}"> {{ state.name }}<br>
+                {% endfor %}
+            </div>
+            <div class="cities_filter">
+                <h2>Cities</h2>
+                <!-- Filter content goes here -->
+                {% for city in cities.values() %}
+                <input type="checkbox" name="city" value="{{ city.id }}"> {{ city.name }}<br>
+                {% endfor %}
+            </div>
+            <div class="amenities_filter">
+                <h2>Amenities</h2>
+                <!-- Filter content goes here -->
+                {% for amenity in amenities.values() %}
+                <input type="checkbox" name="amenity" value="{{ amenity.id }}"> {{ amenity.name }}<br>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="places">
+            <h2>Places</h2>
+            <!-- Place content goes here -->
+            {% for place in places.values() %}
+            <article class="place">
+                <div class="price_by_night">{{ place.price_by_night }}</div>
+                <div class="name">{{ place.name }}</div>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content goes here -->
+        </div>
+    </footer>
+</body>
+</html>
 
-{{ place.max_guest }} Guests
-
-{{ place.number_rooms }} Rooms
-
-{{ place.number_bathrooms }} Bathrooms
-Owner: {{ place.user.first_name }} {{ place.user.last_name }}
-{{ place.description|safe }}
-Amenities
-{% for amenity in place.amenities|sort(attribute="name") %}
-{{ amenity.name }}
-
-{% endfor %}
-{{ place.reviews.__len__() }} Reviews
-{% for review in place.reviews %}
-From {{ review.user.first_name }} the {{ review.created_at.date().__str__() }}
-{{ review.text|safe }}
-
-{% endfor %}
-{% endfor %}
-Holberton School
