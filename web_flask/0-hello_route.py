@@ -1,14 +1,15 @@
-#!/usr/bin/python3
-""" Starts a Flash Web Application """
 from flask import Flask
+
+# Create a Flask application object named 'app'
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def hello_hbnb():
-    """ Prints a Message when / is called """
+# Define a route for '/airbnb-onepage/'
+@app.route('/airbnb-onepage/')
+def hello():
     return 'Hello HBNB!'
 
-if __name__ == "__main__":
-    """ Main Function """
+
+# Run the Flask application if this script is executed directly
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
